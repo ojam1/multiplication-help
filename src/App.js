@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 
 import mutlipleFinder from './utils/multiples'
-import Number from "./components/Number/Number";
+import Number from "./components/NumberButton/NumberButton";
 import Grid from "./components/Grid/Grid";
 
 const GlobalStyle = createGlobalStyle`
@@ -31,17 +31,15 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => {
-  const [selectedNumber, setSelected] = useState(0)
+const App = ({ gridSize }) => {
+  const [selectedNumber, setSelectedNumber] = useState(0)
   const [multiples, setMultiples] = useState([])
 
   useEffect(() => {
-    if (selectedNumber !== 0) setMultiples(mutlipleFinder(selectedNumber, 144))
-  }, [selectedNumber])
+    if (selectedNumber !== 0) setMultiples(mutlipleFinder(selectedNumber, gridSize))
+  }, [selectedNumber, gridSize])
 
-  console.log(selectedNumber, multiples);
-
-  const highlight = (number) => {
+  const isNumberAMultiple = (number) => {
     return !!multiples.find(element => number === element)
   }
   return (
@@ -49,8 +47,8 @@ const App = () => {
     <GlobalStyle />
     <header>Which? Javascript exercise</header>
     <Grid>
-      {Array.from({ length: 144 }).map((element, index) => {
-        return <Number number={index + 1} highlighted={highlight(index + 1)} onClickFunction={setSelected}/>;
+      {Array.from({ length: gridSize }).map((element, index) => {
+        return <Number number={index + 1} highlighted={isNumberAMultiple(index + 1)} onClickFunction={setSelectedNumber}/>;
       })}
     </Grid>
   </>

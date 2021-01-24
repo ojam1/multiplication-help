@@ -1,8 +1,8 @@
 import React from "react";
 
-import Wrapper from "./number.style";
+import Wrapper from "./numberButton.style";
 
-const Number = ({ number, highlighted, onClickFunction }) => (
+const NumberButton = ({ number, highlighted, onClickFunction }) => (
   <Wrapper
     onClick={() => onClickFunction(number)}
     highlighted={highlighted}
@@ -17,4 +17,4 @@ const Number = ({ number, highlighted, onClickFunction }) => (
   </Wrapper>
 );
 
-export default Number;
+export default NumberButton;

@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App gridSize={144} />
   </React.StrictMode>,
   document.getElementById('root')
 );

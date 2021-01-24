@@ -9,8 +9,9 @@ export default styled.div.attrs(({ number }) => ({
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  min-width: 20rem;
-  min-height: 20rem;
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
   padding: 1rem;
   color: black;
   border: 2px solid black;
@@ -22,5 +23,13 @@ export default styled.div.attrs(({ number }) => ({
 
   &:focus-visible {
     outline: 2px solid blue
+  }
+
+  @media only screen
+  and (min-width: 768px) {
+    margin: 0;
+    width: 30rem;
+    height: 30rem;
+    font-size: 3.5rem;
   }
 `;
