@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 `;
+
 const App = () => (
   <>
     <GlobalStyle />

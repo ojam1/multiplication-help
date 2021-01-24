@@ -17,5 +17,6 @@ export default styled.div`
   @media only screen
   and (min-width: 1025px) {
       grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 2rem;
   }
 `;
