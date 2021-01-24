@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 
+import mutlipleFinder from './utils/multiples'
 import Number from "./components/Number/Number";
 import Grid from "./components/Grid/Grid";
 
@@ -30,16 +31,29 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => (
+const App = () => {
+  const [selectedNumber, setSelected] = useState(0)
+  const [multiples, setMultiples] = useState([])
+
+  useEffect(() => {
+    if (selectedNumber !== 0) setMultiples(mutlipleFinder(selectedNumber, 144))
+  }, [selectedNumber])
+
+  console.log(selectedNumber, multiples);
+
+  const highlight = (number) => {
+    return !!multiples.find(element => number === element)
+  }
+  return (
   <>
     <GlobalStyle />
     <header>Which? Javascript exercise</header>
     <Grid>
       {Array.from({ length: 144 }).map((element, index) => {
-        return <Number number={index + 1} highlighted={false} />;
+        return <Number number={index + 1} highlighted={highlight(index + 1)} onClickFunction={setSelected}/>;
       })}
     </Grid>
   </>
-);
+)};
 
 export default App;
